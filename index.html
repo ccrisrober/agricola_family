@@ -1,249 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agricola Familiar Edition</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <style>
-      input.form-control, thead tr > th 
-      {
-        text-align: center;
-      }
-      tr > th:first-child, tr > td:first-child
-      {
-        text-align: right;
-      }
-      tbody th {
-        position: sticky;
-        top: 0; /* Don't forget this, required for the stickiness */
-      }
-      tbody th
-      {
-        position: sticky;
-        bottom: 0;
-        color: #fff;
-        background-color: #212529;
-        border-color: #32383e;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <table class="table table-striped">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col"><button class="btn" id="calculate">CALCULATE</button></th>
-                <th scope="col">Player 1</th>
-                <th scope="col">Player 2</th>
-                <th scope="col">Player 3</th>
-                <th scope="col">Player 4</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td scope="row">Persons</td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="person[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="person[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="person[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="person[]"></td>
-              </tr>
-              <tr>
-                <td scope="row">Begging Markers</td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="begging[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="begging[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="begging[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="begging[]"></td>
-              </tr>
-              <tr>
-                <td scope="row">Sheep</td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="sheep[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="sheep[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="sheep[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="sheep[]"></td>
-              </tr>
-              <tr>
-                <td scope="row">Boar</td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="boar[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="boar[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="boar[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="boar[]"></td>
-              </tr>
-              <tr>
-                <td scope="row">Cattle</td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="cattle[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="cattle[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="cattle[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="cattle[]"></td>
-              </tr>
-              <tr>
-                <td scope="row">Clay Rooms</td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="clayroom[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="clayroom[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="clayroom[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="clayroom[]"></td>
-              </tr>
-              <tr>
-                <td scope="row">Fields</td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="field[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="field[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="field[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="field[]"></td>
-              </tr>
-              <tr>
-                <td scope="row">Pastures</td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="pasture[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="pasture[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="pasture[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="pasture[]"></td>
-              </tr>
-              <tr>
-                <td scope="row">Grain ON a field</td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="grain_field[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="grain_field[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="grain_field[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="grain_field[]"></td>
-              </tr>
-              <tr>
-                <td scope="row">Special Tiles</td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="special_tile[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="special_tile[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="special_tile[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="special_tile[]"></td>
-              </tr>
-              <tr>
-                <td scope="row">Wind Mill</td>
-                <td scope="row"><input type="radio" class="form-control" placeholder="" name="windmill[]"></td>
-                <td scope="row"><input type="radio" class="form-control" placeholder="" name="windmill[]"></td>
-                <td scope="row"><input type="radio" class="form-control" placeholder="" name="windmill[]"></td>
-                <td scope="row"><input type="radio" class="form-control" placeholder="" name="windmill[]"></td>
-              </tr>
-              <tr>
-                <td scope="row">Basketmaker's Workshop</td>
-                <td scope="row"><input type="radio" class="form-control" placeholder="" name="basketmaker[]"></td>
-                <td scope="row"><input type="radio" class="form-control" placeholder="" name="basketmaker[]"></td>
-                <td scope="row"><input type="radio" class="form-control" placeholder="" name="basketmaker[]"></td>
-                <td scope="row"><input type="radio" class="form-control" placeholder="" name="basketmaker[]"></td>
-              </tr>
-              <tr>
-                <td scope="row">Pottery</td>
-                <td scope="row"><input type="radio" class="form-control" placeholder="" name="pottery[]"></td>
-                <td scope="row"><input type="radio" class="form-control" placeholder="" name="pottery[]"></td>
-                <td scope="row"><input type="radio" class="form-control" placeholder="" name="pottery[]"></td>
-                <td scope="row"><input type="radio" class="form-control" placeholder="" name="pottery[]"></td>
-              </tr>
-              <tr>
-                <td scope="row">Joinery</td>
-                <td scope="row"><input type="radio" class="form-control" placeholder="" name="joinery[]"></td>
-                <td scope="row"><input type="radio" class="form-control" placeholder="" name="joinery[]"></td>
-                <td scope="row"><input type="radio" class="form-control" placeholder="" name="joinery[]"></td>
-                <td scope="row"><input type="radio" class="form-control" placeholder="" name="joinery[]"></td>
-              </tr>
-              <tr>
-                <td scope="row">Depot</td>
-                <td scope="row"><input type="radio" class="form-control" placeholder="" name="depot[]"></td>
-                <td scope="row"><input type="radio" class="form-control" placeholder="" name="depot[]"></td>
-                <td scope="row"><input type="radio" class="form-control" placeholder="" name="depot[]"></td>
-                <td scope="row"><input type="radio" class="form-control" placeholder="" name="depot[]"></td>
-              </tr>
-              <tr>
-                <td scope="row">Reed</td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="reed[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="reed[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="reed[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="reed[]"></td>
-              </tr>
-              <tr>
-                <td scope="row">Clay</td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="clay[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="clay[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="clay[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="clay[]"></td>
-              </tr>
-              <tr>
-                <td scope="row">Wood</td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="wood[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="wood[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="wood[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="wood[]"></td>
-              </tr>
-              <tr>
-                <td scope="row">Grain</td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="grain[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="grain[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="grain[]"></td>
-                <td scope="row"><input type="text" class="form-control" placeholder="" name="grain[]"></td>
-              </tr>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agricola Familiar Edition</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <style>
+    input.form-control,
+    thead tr>th {
+      text-align: center;
+    }
+
+    tr>th:first-child,
+    tr>td:first-child {
+      text-align: right;
+    }
+
+    tbody th {
+      position: sticky;
+      top: 0;
+      /* Don't forget this, required for the stickiness */
+    }
+
+    tbody th {
+      position: sticky;
+      bottom: 0;
+      color: #fff;
+      background-color: #212529;
+      border-color: #32383e;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col"><button class="btn" id="calculate">CALCULATE</button></th>
+              <th scope="col">Player 1</th>
+              <th scope="col">Player 2</th>
+              <th scope="col">Player 3</th>
+              <th scope="col">Player 4</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td scope="row">Persons</td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="person[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="person[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="person[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="person[]"></td>
+            </tr>
+            <tr>
+              <td scope="row">Begging Markers</td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="begging[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="begging[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="begging[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="begging[]"></td>
+            </tr>
+            <tr>
+              <td scope="row">Sheep</td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="sheep[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="sheep[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="sheep[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="sheep[]"></td>
+            </tr>
+            <tr>
+              <td scope="row">Boar</td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="boar[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="boar[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="boar[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="boar[]"></td>
+            </tr>
+            <tr>
+              <td scope="row">Cattle</td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="cattle[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="cattle[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="cattle[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="cattle[]"></td>
+            </tr>
+            <tr>
+              <td scope="row">Clay Rooms</td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="clayroom[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="clayroom[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="clayroom[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="clayroom[]"></td>
+            </tr>
+            <tr>
+              <td scope="row">Fields</td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="field[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="field[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="field[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="field[]"></td>
+            </tr>
+            <tr>
+              <td scope="row">Pastures</td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="pasture[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="pasture[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="pasture[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="pasture[]"></td>
+            </tr>
+            <tr>
+              <td scope="row">Grain ON a field</td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="grain_field[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="grain_field[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="grain_field[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="grain_field[]"></td>
+            </tr>
+            <tr>
+              <td scope="row">Special Tiles</td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="special_tile[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="special_tile[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="special_tile[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="special_tile[]"></td>
+            </tr>
+            <tr>
+              <td scope="row">Wind Mill</td>
+              <td scope="row" colspan="4">
+                <div class="form-group">
+                  <select class="form-control" id="windmill" name="windmill">
+                    <option value="-1">None</option>
+                    <option value="0">Player 1</option>
+                    <option value="1">Player 2</option>
+                    <option value="2">Player 3</option>
+                    <option value="3">Player 4</option>
+                  </select>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td scope="row">Basketmaker's Workshop</td>
+              <td scope="row" colspan="4">
+                <div class="form-group">
+                  <select class="form-control" id="basketmaker" name="basketmaker">
+                    <option value="-1">None</option>
+                    <option value="0">Player 1</option>
+                    <option value="1">Player 2</option>
+                    <option value="2">Player 3</option>
+                    <option value="3">Player 4</option>
+                  </select>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td scope="row">Pottery</td>
+              <td scope="row" colspan="4">
+                <div class="form-group">
+                  <select class="form-control" id="pottery" name="pottery">
+                    <option value="-1">None</option>
+                    <option value="0">Player 1</option>
+                    <option value="1">Player 2</option>
+                    <option value="2">Player 3</option>
+                    <option value="3">Player 4</option>
+                  </select>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td scope="row">Joinery</td>
+              <td scope="row" colspan="4">
+                <div class="form-group">
+                  <select class="form-control" id="joinery" name="joinery">
+                    <option value="-1">None</option>
+                    <option value="0">Player 1</option>
+                    <option value="1">Player 2</option>
+                    <option value="2">Player 3</option>
+                    <option value="3">Player 4</option>
+                  </select>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td scope="row">Depot</td>
+              <td scope="row" colspan="4">
+                <div class="form-group">
+                  <select class="form-control" id="depot" name="depot">
+                    <option value="-1">None</option>
+                    <option value="0">Player 1</option>
+                    <option value="1">Player 2</option>
+                    <option value="2">Player 3</option>
+                    <option value="3">Player 4</option>
+                  </select>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td scope="row">Reed</td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="reed[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="reed[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="reed[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="reed[]"></td>
+            </tr>
+            <tr>
+              <td scope="row">Clay</td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="clay[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="clay[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="clay[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="clay[]"></td>
+            </tr>
+            <tr>
+              <td scope="row">Wood</td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="wood[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="wood[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="wood[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="wood[]"></td>
+            </tr>
+            <tr>
+              <td scope="row">Grain</td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="grain[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="grain[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="grain[]"></td>
+              <td scope="row"><input type="text" class="form-control" placeholder="" name="grain[]"></td>
+            </tr>
             <!--</tbody>
             <tfoot>-->
-              <tr>
-                <th scope="row">Total:</th>
-                <th scope="row"><input type="text" class="form-control" placeholder="" name="total[]" disabled></th>
-                <th scope="row"><input type="text" class="form-control" placeholder="" name="total[]" disabled></th>
-                <th scope="row"><input type="text" class="form-control" placeholder="" name="total[]" disabled></th>
-                <th scope="row"><input type="text" class="form-control" placeholder="" name="total[]" disabled></th>
-              </tr>
+            <tr>
+              <th scope="row">Total:</th>
+              <th scope="row"><input type="text" class="form-control" placeholder="" name="total[]" disabled></th>
+              <th scope="row"><input type="text" class="form-control" placeholder="" name="total[]" disabled></th>
+              <th scope="row"><input type="text" class="form-control" placeholder="" name="total[]" disabled></th>
+              <th scope="row"><input type="text" class="form-control" placeholder="" name="total[]" disabled></th>
+            </tr>
             <!--</tfoot>-->
           </tbody>
-          </table>
-        </div>
+        </table>
       </div>
     </div>
-    <script>
-      let button = document.getElementById( "calculate" );
-      button.onclick = function( )
-      {
-        let persons = Array.from(document.getElementsByName("person[]")).map( ( v ) => +v.value );
-        let beggins = Array.from(document.getElementsByName("begging[]")).map( ( v ) => +v.value );
-        let sheeps = Array.from(document.getElementsByName("sheep[]")).map( ( v ) => +v.value );
-        let boars = Array.from(document.getElementsByName("boar[]")).map( ( v ) => +v.value );
-        let cattles = Array.from(document.getElementsByName("cattle[]")).map( ( v ) => +v.value );
-        let clayrooms = Array.from(document.getElementsByName("clayroom[]")).map( ( v ) => +v.value );
-        let fields = Array.from(document.getElementsByName("field[]")).map( ( v ) => +v.value );
-        let pastures = Array.from(document.getElementsByName("pasture[]")).map( ( v ) => +v.value );
-        let grain_fields = Array.from(document.getElementsByName("grain_field[]")).map( ( v ) => +v.value );
-        let special_tiles = Array.from(document.getElementsByName("special_tile[]")).map( ( v ) => +v.value );
-        let windmill = Array.from(document.getElementsByName("windmill[]")).map( ( v ) => v.checked );
-        let basketmaker = Array.from(document.getElementsByName("basketmaker[]")).map( ( v ) => v.checked );
-        let pottery = Array.from(document.getElementsByName("pottery[]")).map( ( v ) => v.checked );
-        let joinery = Array.from(document.getElementsByName("joinery[]")).map( ( v ) => v.checked );
-        let depot = Array.from(document.getElementsByName("depot[]")).map( ( v ) => v.checked );
-        let reed = Array.from(document.getElementsByName("reed[]")).map( ( v ) => +v.value );
-        let clay = Array.from(document.getElementsByName("clay[]")).map( ( v ) => +v.value );
-        let wood = Array.from(document.getElementsByName("wood[]")).map( ( v ) => +v.value );
-        let grain = Array.from(document.getElementsByName("grain[]")).map( ( v ) => +v.value );
+  </div>
+  <script>
+    let button = document.getElementById( "calculate" );
+    button.onclick = function () {
+      let persons = Array.from( document.getElementsByName( "person[]" ) ).map( ( v ) => +v.value );
+      let beggins = Array.from( document.getElementsByName( "begging[]" ) ).map( ( v ) => +v.value );
+      let sheeps = Array.from( document.getElementsByName( "sheep[]" ) ).map( ( v ) => +v.value );
+      let boars = Array.from( document.getElementsByName( "boar[]" ) ).map( ( v ) => +v.value );
+      let cattles = Array.from( document.getElementsByName( "cattle[]" ) ).map( ( v ) => +v.value );
+      let clayrooms = Array.from( document.getElementsByName( "clayroom[]" ) ).map( ( v ) => +v.value );
+      let fields = Array.from( document.getElementsByName( "field[]" ) ).map( ( v ) => +v.value );
+      let pastures = Array.from( document.getElementsByName( "pasture[]" ) ).map( ( v ) => +v.value );
+      let grain_fields = Array.from( document.getElementsByName( "grain_field[]" ) ).map( ( v ) => +v.value );
+      let special_tiles = Array.from( document.getElementsByName( "special_tile[]" ) ).map( ( v ) => +v.value );
+      let windmill = +document.getElementById( "windmill" ).value;
+      let basketmaker = +document.getElementById( "basketmaker" ).value;
+      let pottery = +document.getElementById( "pottery" ).value;
+      let joinery = +document.getElementById( "joinery" ).value;
+      let depot = +document.getElementById( "depot" ).value;
+      let reed = Array.from( document.getElementsByName( "reed[]" ) ).map( ( v ) => +v.value );
+      let clay = Array.from( document.getElementsByName( "clay[]" ) ).map( ( v ) => +v.value );
+      let wood = Array.from( document.getElementsByName( "wood[]" ) ).map( ( v ) => +v.value );
+      let grain = Array.from( document.getElementsByName( "grain[]" ) ).map( ( v ) => +v.value );
 
 
-        let totals = document.getElementsByName( "total[]" );
-        for( let i = 0; i < 4; ++i )
-        {
-          let sum = 3 * persons[ i ] - 3 * beggins[ i ] + sheeps[ i ] + boars[ i ] + cattles[ i ] + 
-                    clayrooms[ i ] + fields[ i ] + pastures[ i ] + grain_fields[ i ];
-                    if( windmill[ i ] )
-          {
-            sum += Math.floor( grain[ i ] / 2 );
-          }
-          if( basketmaker[ i ] )
-          {
-            sum += Math.floor( reed[ i ] / 2 );
-          }
-          if( pottery[ i ] )
-          {
-            sum += Math.floor( clay[ i ] / 2 );
-          }
-          if( joinery[ i ] )
-          {
-            sum += Math.floor( wood[ i ] / 2 );
-          }
-          if( depot[ i ] )
-          {
-            sum += Math.floor( ( reed[ i ] + clay[ i ] + wood[ i ] + grain[ i ] ) / 3 );
-          }
-          totals[ i ].value = sum;
+      let totals = document.getElementsByName( "total[]" );
+      for ( let i = 0; i < 4; ++i ) {
+        let sum = 3 * persons[ i ] - 3 * beggins[ i ] + sheeps[ i ] + boars[ i ] + cattles[ i ] +
+          clayrooms[ i ] + fields[ i ] + pastures[ i ] + grain_fields[ i ];
+        if ( windmill === i ) {
+          sum += Math.floor( grain[ i ] / 2 );
         }
+        if ( basketmaker === i ) {
+          sum += Math.floor( reed[ i ] / 2 );
+        }
+        if ( pottery === i ) {
+          sum += Math.floor( clay[ i ] / 2 );
+        }
+        if ( joinery === i ) {
+          sum += Math.floor( wood[ i ] / 2 );
+        }
+        if ( depot === i ) {
+          sum += Math.floor( ( reed[ i ] + clay[ i ] + wood[ i ] + grain[ i ] ) / 3 );
+        }
+        totals[ i ].value = sum;
       }
-    </script>
-  </body>
+    }
+  </script>
+</body>
+
 </html>
